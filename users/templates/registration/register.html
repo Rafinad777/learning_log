@@ -1,0 +1,27 @@
+{% extends "learning_logs/base.html" %}
+{% block content %}
+{% load bootstrap4 %}
+
+<!-- {% block page_header %}
+	<h1>Register.</h1>
+{% endblock page_header %} -->
+
+	<form method="post" action="{% url 'users:register' %}" class="form">
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button name = "submit" class="btn btn-primary">register</button>
+		{% endbuttons %}
+		<input type="hidden" name="next" value="{% url 'learning_logs:index' %}" >
+	</form>
+	<div>
+		<p>Обязательный. 150 символов или меньше. Только буквы, цифры и @ /. / + / - / _.</p>
+		<ul>
+			<li><Ваш пароль не может быть слишком похож на вашу другую личную информацию./li>
+			<li>Ваш пароль должен содержать не менее 8 символов.</li>
+			<li>Ваш пароль не может быть обычным паролем.</li>
+			<li>Ваш пароль не может быть полностью числовым.</li>
+			<li>Подтверждение пароля: введите тот же пароль, что и раньше, для проверки.</li>
+		</ul>
+	</div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+<p>
+	<a href="{% url 'learning_logs:index' %}">Learning Logs (Журналы обучения)</a> -
+	<a href="{% url 'learning_logs:topics' %}">Topics (Темы)</a> -
+	{% if user.is_authenticated %}
+		Hello, {{user.username}}
+		<a href="{% url 'users:logout' %}">log out (выйти)</a> -
+	{% else %}
+		<a href="{% url 'users:register' %}">Register (регистрация)</a> -
+		<a href="{% url 'users:login' %}">log in (авторизоваться)</a>
+	{% endif %}
+</p>
+{% block content %}{% endblock content %}
