@@ -5,13 +5,13 @@
 {% endblock page_header %}
 
 {% block content %}
-<p>Topic (Темы): {{topic}}</p>
-<p>Entries:</p>
+
 <p>
-	<a href="{% url 'learning_logs:new_entry' topic.id %}">add new entry</a>
+	<a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
 </p>
 <ul>
 	{% for entry in entries %}
+
 	<div class="card mb-3">
 		<h4 class="card-header">
 			{{entry.date_added|date:'M d, Y H:i' }}
@@ -24,15 +24,8 @@
 		</div>
 	</div>
 
-<!-- 	<li>
-		<p>{{entry.date_added|date:'M d, Y H:i' }}</p>
-		<p>{{entry.text|linebreaks}}</p>
-		<p>
-			<a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry (Редактировать запись)</a>
-		</p>
-	</li> -->
 	{% empty %}
-		<p>There are no entries for this topic yet (В этой теме пока нет записей).</p>
+		<p>There are no entries for this topic yet.</p>
 	{% endfor %}
 </ul>
 {% endblock content %}
